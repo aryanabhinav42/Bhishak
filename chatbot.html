@@ -7,20 +7,37 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',system-ui,sans-serif}
-    body{background:#fffef7;display:flex;flex-direction:column;align-items:center;min-height:100vh;padding:1rem 1rem 5.5rem}
+    /* Increased bottom padding to accommodate the larger chat area and sticky bars cleanly */
+    body{background:#fffef7;display:flex;flex-direction:column;align-items:center;min-height:100vh;padding:1rem 1rem 12rem}
     .app-container{max-width:500px;width:100%;background:#fff;border-radius:2.5rem;box-shadow:0 8px 20px rgba(180,130,20,0.08);padding:1.8rem 1.3rem;border:1px solid #ffe9a7}
     .brand{display:flex;align-items:center;gap:0.6rem;margin-bottom:1rem}
     .brand i{font-size:1.6rem;color:#d4a017}
     .brand h1{font-size:1.8rem;background:linear-gradient(to right,#c99a2b,#b47c2e);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-    .chat-window{background:#fffef2;border-radius:1.5rem;padding:1rem;height:320px;overflow-y:auto;border:1px solid #f7e2a4;margin-bottom:0.8rem;font-size:0.9rem}
+    
+    /* Expanded height from 280px to 500px for a much bigger chatting section */
+    .chat-window{background:#fffef2;border-radius:1.5rem;padding:1rem;height:500px;overflow-y:auto;border:1px solid #f7e2a4;margin-bottom:0.8rem;font-size:0.9rem}
     .chat-row{margin-bottom:0.5rem; line-height:1.4}
+    
+    /* Sticky container for the input group right above bottom nav */
+    .sticky-input-container {
+      position: fixed;
+      bottom: 4.2rem; /* Sits directly above the bottom nav */
+      left: 0;
+      right: 0;
+      background: #fffef7;
+      padding: 0.5rem 1rem;
+      max-width: 500px;
+      margin: 0 auto;
+      z-index: 99;
+    }
     .input-group{display:flex;gap:0.5rem}
-    input{flex:2;padding:0.9rem 1.2rem;border-radius:2rem;border:1px solid #f0d48a;background:#fffef7;outline:none}
+    input{flex:2;padding:0.9rem 1.2rem;border-radius:2rem;border:1px solid #f0d48a;background:#fff;outline:none}
     button{background:#f7d44a;border:none;color:#4a3b1f;font-weight:700;padding:0.8rem 1.2rem;border-radius:2.5rem;cursor:pointer;display:flex;align-items:center;gap:0.4rem;box-shadow:0 4px 8px rgba(230,170,20,0.25);border:1px solid #e6b422}
     button:disabled{opacity:0.6; cursor:not-allowed}
     .warning-note{color:#b45309;background:#fff3e0;border-radius:2rem;padding:0.5rem 1rem;font-size:0.8rem;margin-top:0.8rem;display:flex;align-items:center;gap:0.5rem}
     .fallback-notice{background:#fff6d5;color:#7a5c12;padding:0.4rem 1rem;border-radius:1rem;font-size:0.8rem;display:inline-block;margin-bottom:0.4rem}
-    .bottom-nav{position:fixed;bottom:0;left:0;right:0;background:#fffef7;border-top:2px solid #fad87a;display:flex;justify-content:space-around;padding:0.7rem 0.5rem;box-shadow:0 -4px 12px rgba(230,180,20,0.12);max-width:500px;margin:0 auto;border-radius:2rem 2rem 0 0}
+    
+    .bottom-nav{position:fixed;bottom:0;left:0;right:0;background:#fffef7;border-top:2px solid #fad87a;display:flex;justify-content:space-around;padding:0.7rem 0.5rem;box-shadow:0 -4px 12px rgba(230,180,20,0.12);max-width:500px;margin:0 auto;border-radius:2rem 2rem 0 0;z-index:100}
     .nav-item{display:flex;flex-direction:column;align-items:center;font-size:0.8rem;color:#8b7a4c;font-weight:600;text-decoration:none}
     .nav-item i{font-size:1.4rem;color:#b4943c}
     .nav-item.active{color:#b47c2e}
@@ -38,14 +55,15 @@
   <div class="chat-window" id="chatMessages">
     <div class="chat-row"><i class="fas fa-robot" style="color:#d4a017;"></i> <strong>Bhishak:</strong> Namaste! Ask about Ayurvedic remedies, precautions, or prevention. 🙏</div>
   </div>
+  </div>
+
+<div class="sticky-input-container">
   <div class="input-group">
     <input type="text" id="userInput" placeholder="e.g., natural cure for acidity?">
     <button id="sendBtn"><i class="fas fa-paper-plane"></i> Send</button>
   </div>
-  <!-- <div class="warning-note">
-    <i class="fas fa-info-circle"></i> For critical situations, immediately consult a doctor.
-  </div> -->
 </div>
+
 <nav class="bottom-nav">
   <a class="nav-item" href="index.html"><i class="fas fa-home"></i><span>Home</span></a>
   <a class="nav-item" href="remedies.html"><i class="fas fa-leaf"></i><span>Remedies</span></a>
