@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>Bhishak · 80+ Ayurvedic Remedies</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* ========== EXACT SAME GLOBAL STYLES AS INDEX.HTML ========== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+    }
+
+    body {
+      background: #fffef7;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 1rem 1rem 5.5rem;
+    }
+
+    .app-container {
+      max-width: 500px;
+      width: 100%;
+      background: #fff;
+      border-radius: 2.5rem;
+      box-shadow: 0 8px 20px rgba(180, 130, 20, 0.08);
+      padding: 1.8rem 1.3rem;
+      border: 1px solid #ffe9a7;
+    }
+
+    /* ========== BRAND (copied from index.html) ========== */
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      justify-content: center;
+      margin-bottom: 1.2rem;
+    }
+    .brand i {
+      font-size: 2.4rem;
+      color: #d4a017;
+      background: #fff6d5;
+      padding: 0.5rem;
+      border-radius: 50%;
+    }
+    .brand h1 {
+      font-size: 2.3rem;
+      font-weight: 700;
+      background: linear-gradient(to right, #c99a2b, #b47c2e);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ========== CARD (same as index.html) ========== */
+    .card {
+      background: #fffef5;
+      border-radius: 1.8rem;
+      padding: 1.3rem;
+      box-shadow: 0 6px 14px rgba(200, 150, 30, 0.07);
+      border: 1px solid #fae29c;
+      margin-top: 0.8rem;
+    }
+
+    /* ========== REMEDY SPECIFIC ELEMENTS ========== */
+    .search-box {
+      width: 100%;
+      padding: 0.9rem 1.3rem;
+      border-radius: 2.5rem;
+      border: 1px solid #f0d48a;
+      background: #fffef7;
+      font-size: 0.95rem;
+      outline: none;
+      color: #4a3b1f;
+      margin-bottom: 0.5rem;
+    }
+
+    .remedy-card {
+      background: #fffef5;
+      border-radius: 1.8rem;
+      padding: 1.2rem;
+      box-shadow: 0 6px 14px rgba(200, 150, 30, 0.07);
+      border: 1px solid #fae29c;
+      margin-bottom: 0.8rem;
+    }
+
+    .remedy-title {
+      font-weight: 700;
+      color: #8b691b;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .herb-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 0.5rem 0 0.6rem;
+    }
+
+    .herb-badge {
+      background: #fef3c7;
+      padding: 0.25rem 0.9rem;
+      border-radius: 2rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #7a5c12;
+      border: 1px solid #eecb6e;
+    }
+
+    .process {
+      color: #4a3b1f;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .warning-note {
+      color: #b45309;
+      background: #fff3e0;
+      border-radius: 2rem;
+      padding: 0.6rem 1rem;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
+      font-weight: 500;
+    }
+
+    #noResults {
+      text-align: center;
+      padding: 2rem;
+      color: #7a5c12;
+      display: none;
+      font-size: 0.95rem;
+    }
+
+    /* ========== BOTTOM NAV (identical to index.html) ========== */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #fffef7;
+      border-top: 2px solid #fad87a;
+      display: flex;
+      justify-content: space-around;
+      padding: 0.7rem 0.5rem;
+      box-shadow: 0 -4px 12px rgba(230, 180, 20, 0.12);
+      max-width: 500px;
+      margin: 0 auto;
+      border-radius: 2rem 2rem 0 0;
+      z-index: 10;
+    }
+
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 0.8rem;
+      color: #8b7a4c;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .nav-item i {
+      font-size: 1.4rem;
+      color: #b4943c;
+    }
+
+    .nav-item.active {
+      color: #b47c2e;
+      transform: scale(1.05);
+    }
+
+    @supports (padding-bottom: env(safe-area-inset-bottom)) {
+      .bottom-nav {
+        padding-bottom: calc(0.7rem + env(safe-area-inset-bottom));
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-container">
+    <!-- BRAND (exactly like index.html) -->
+    <div class="brand">
+      <i class="fas fa-om"></i>
+      <h1>Bhishak</h1>
+    </div>
+
+    <!-- SEARCH BOX -->
+    <input type="text" id="searchInput" class="search-box" placeholder="🔍 Search remedy, herb, or condition...">
+
+    <!-- REMEDIES LIST -->
+    <div id="remedyList"></div>
+    <div id="noResults"><i class="fas fa-leaf"></i> No remedies found. Try a different keyword.</div>
+
+    <!-- WARNING -->
+    <div class="warning-note">
+      <i class="fas fa-stethoscope"></i> For serious or persistent symptoms, always consult a doctor.
+    </div>
+  </div>
+
+  <!-- BOTTOM NAVIGATION -->
+  <nav class="bottom-nav">
+  <a class="nav-item" href="index.html"><i class="fas fa-home"></i><span>Home</span></a>
+  <a class="nav-item active" href="remedies.html"><i class="fas fa-leaf"></i><span>Remedies</span></a>
+  <a class="nav-item" href="chatbot.html"><i class="fas fa-robot"></i><span>Bhishak AI</span></a>
+  <a class="nav-item" href="contact.html"><i class="fas fa-envelope"></i><span>Contact</span></a>
+</nav>
+
+  <script>
+    const remedies = [
+      { issue:"Common Cold", herbs:["Tulsi","Ginger","Honey"], process:"Boil 5-6 Tulsi leaves + 1 inch ginger in 2 cups water. Reduce to half, add 1 tsp honey. Sip warm 2-3 times a day." },
+      { issue:"Dry Cough", herbs:["Turmeric","Milk","Black Pepper"], process:"Mix ½ tsp turmeric + pinch black pepper in warm milk. Drink before bed." },
+      { issue:"Sore Throat", herbs:["Salt","Turmeric","Warm water"], process:"Gargle with warm water mixed with ½ tsp salt and pinch turmeric 3 times daily." },
+      { issue:"Fever (Mild)", herbs:["Tulsi","Giloy","Honey"], process:"Boil Tulsi and Giloy stems in water, strain, add honey. Drink twice daily." },
+      { issue:"Headache", herbs:["Peppermint oil","Lavender"], process:"Apply diluted peppermint oil on temples and forehead. Inhale lavender steam." },
+      { issue:"Migraine", herbs:["Ginger","Feverfew"], process:"Chew a small piece of fresh ginger or drink ginger tea. Apply cold compress." },
+      { issue:"Indigestion", herbs:["Cumin","Coriander","Fennel"], process:"Mix equal parts roasted cumin, coriander, fennel powder. Take ½ tsp with warm water after meals." },
+      { issue:"Acidity", herbs:["Cold milk","Mint leaves"], process:"Drink a glass of cold milk or chew fresh mint leaves after meals." },
+      { issue:"Bloating / Gas", herbs:["Ajwain","Black salt"], process:"Chew ½ tsp ajwain with a pinch of black salt. Sip warm water." },
+      { issue:"Constipation", herbs:["Triphala","Warm water"], process:"Take 1 tsp Triphala powder with warm water before bed." },
+      { issue:"Diarrhea", herbs:["Pomegranate peel","Buttermilk"], process:"Boil pomegranate peel in water, strain and drink. Also sip buttermilk with pinch of rock salt." },
+      { issue:"Nausea", herbs:["Ginger","Lemon"], process:"Chew a thin slice of ginger with a few drops of lemon juice. Or drink ginger tea." },
+      { issue:"Vomiting", herbs:["Cardamom","Clove"], process:"Chew 2 cardamom pods slowly. Alternatively sip clove water." },
+      { issue:"Joint Pain", herbs:["Turmeric","Ginger","Eucalyptus oil"], process:"Drink turmeric milk daily. Massage joints with warm eucalyptus oil." },
+      { issue:"Arthritis", herbs:["Ashwagandha","Guggul","Turmeric"], process:"Take Ashwagandha + Guggul as directed. Apply warm sesame oil on joints." },
+      { issue:"Back Pain", herbs:["Garlic","Mustard oil"], process:"Heat 2 crushed garlic cloves in 2 tbsp mustard oil, cool slightly, massage on back." },
+      { issue:"Muscle Cramps", herbs:["Banana","Coconut water"], process:"Eat a ripe banana and drink coconut water for electrolytes." },
+      { issue:"Insomnia", herbs:["Nutmeg","Warm milk"], process:"Mix a pinch of nutmeg powder in warm milk, drink 30 min before bed." },
+      { issue:"Stress / Anxiety", herbs:["Brahmi","Ashwagandha"], process:"Take Brahmi or Ashwagandha powder (½ tsp) in warm milk twice daily." },
+      { issue:"Fatigue", herbs:["Dates","Almonds","Milk"], process:"Blend 2 dates + 5 soaked almonds + 1 cup milk. Drink in the morning." },
+      { issue:"Low Immunity", herbs:["Chyawanprash","Tulsi","Giloy"], process:"Take 1 tsp Chyawanprash daily. Drink Tulsi-Giloy juice." },
+      { issue:"Allergies", herbs:["Turmeric","Honey","Tulsi"], process:"Mix ½ tsp turmeric + 1 tsp honey in warm water. Drink daily." },
+      { issue:"Sinus Congestion", herbs:["Eucalyptus","Steam"], process:"Inhale steam with few drops eucalyptus oil. Drink warm ginger tea." },
+      { issue:"Asthma (Mild)", herbs:["Vasaka","Honey"], process:"Take 1 tsp Vasaka leaf juice with honey on empty stomach." },
+      { issue:"Bronchitis", herbs:["Licorice","Ginger","Honey"], process:"Boil ½ tsp licorice powder + ginger in water, strain, add honey. Drink warm." },
+      { issue:"Earache", herbs:["Garlic","Mustard oil"], process:"Warm 1 clove garlic in 1 tsp mustard oil, cool, put 2 drops in affected ear." },
+      { issue:"Toothache", herbs:["Clove oil"], process:"Apply clove oil on cotton ball and place near aching tooth." },
+      { issue:"Gum Swelling", herbs:["Salt","Turmeric","Mustard oil"], process:"Massage gums with mixture of salt + turmeric in mustard oil." },
+      { issue:"Mouth Ulcer", herbs:["Honey","Coconut oil"], process:"Apply honey or coconut oil on ulcer. Gargle with licorice water." },
+      { issue:"Bad Breath", herbs:["Fennel seeds","Cardamom"], process:"Chew 1 tsp fennel seeds + 1 cardamom after meals." },
+      { issue:"Hair Fall", herbs:["Amla","Coconut oil"], process:"Massage scalp with amla-infused coconut oil. Wash with reetha." },
+      { issue:"Dandruff", herbs:["Neem leaves","Fenugreek"], process:"Soak fenugreek seeds overnight, grind to paste, apply on scalp. Wash after 30 min." },
+      { issue:"Premature Greying", herbs:["Amla","Henna"], process:"Apply amla powder + henna pack weekly. Eat fresh amla daily." },
+      { issue:"Dry Skin", herbs:["Aloe vera","Coconut oil"], process:"Apply fresh aloe vera gel or coconut oil on dry areas before bath." },
+      { issue:"Oily Skin", herbs:["Multani mitti","Rose water"], process:"Mix Multani mitti with rose water, apply mask twice a week." },
+      { issue:"Acne / Pimples", herbs:["Neem","Turmeric","Sandalwood"], process:"Apply paste of neem leaves + turmeric + sandalwood powder on pimples." },
+      { issue:"Dark Circles", herbs:["Almond oil","Rose water"], process:"Gently massage almond oil mixed with rose water under eyes before sleep." },
+      { issue:"Sunburn", herbs:["Aloe vera","Sandalwood paste"], process:"Apply fresh aloe vera gel or sandalwood paste on affected skin." },
+      { issue:"Wrinkles", herbs:["Honey","Banana"], process:"Mash banana with honey, apply face mask for 15 min, rinse." },
+      { issue:"Weight Loss", herbs:["Lemon","Honey","Warm water"], process:"Drink warm water with lemon + honey on empty stomach. Add a pinch of cinnamon." },
+      { issue:"Obesity", herbs:["Triphala","Guggul"], process:"Take Triphala churna with warm water at night. Consult practitioner for Guggul." },
+      { issue:"Diabetes (Support)", herbs:["Karela","Jamun seeds","Fenugreek"], process:"Drink karela juice or soak fenugreek seeds overnight and eat in the morning." },
+      { issue:"High Blood Pressure", herbs:["Garlic","Arjuna bark"], process:"Chew 1 raw garlic clove daily. Drink Arjuna bark tea." },
+      { issue:"High Cholesterol", herbs:["Coriander seeds","Fenugreek"], process:"Soak 1 tsp coriander seeds + fenugreek overnight, drink the water and chew seeds." },
+      { issue:"Anemia", herbs:["Beetroot","Spinach","Amla"], process:"Drink beetroot-amla juice daily. Eat iron-rich foods." },
+      { issue:"Urinary Tract Infection", herbs:["Barley water","Coriander"], process:"Boil barley in water, strain, add coriander powder and drink throughout the day." },
+      { issue:"Kidney Stones (Small)", herbs:["Punarnava","Lemon water"], process:"Drink Punarnava decoction as directed. Hydrate with lemon water." },
+      { issue:"Menstrual Cramps", herbs:["Ginger tea","Ajwain"], process:"Drink hot ginger tea. Heat a cloth with roasted ajwain and apply on lower abdomen." },
+      { issue:"Irregular Periods", herbs:["Aloe vera juice","Turmeric"], process:"Take fresh aloe vera juice with pinch of turmeric in the morning." },
+      { issue:"Menopause Symptoms", herbs:["Shatavari","Ashwagandha"], process:"Take Shatavari powder in warm milk daily. Consult practitioner for dosage." },
+      { issue:"Low Libido", herbs:["Ashwagandha","Safed Musli"], process:"Mix Ashwagandha + Safed Musli powder in milk, drink once daily." },
+      { issue:"Eye Strain", herbs:["Triphala water","Rose water"], process:"Wash eyes with Triphala water (cooled). Put 2 drops rose water in each eye." },
+      { issue:"Conjunctivitis", herbs:["Neem leaves","Triphala"], process:"Boil neem leaves, use cooled water for eye wash. Also use Triphala eyewash." },
+      { issue:"Nose Bleed", herbs:["Onion juice","Ice"], process:"Put 2 drops fresh onion juice in nostrils. Apply ice pack on nose bridge." },
+      { issue:"Burns (Minor)", herbs:["Aloe vera","Coconut oil"], process:"Apply fresh aloe vera gel or coconut oil on the burn. Avoid ice." },
+      { issue:"Cuts / Wounds", herbs:["Turmeric","Honey"], process:"Apply a paste of turmeric + honey on the wound. Cover with clean cloth." },
+      { issue:"Insect Bites", herbs:["Neem paste","Tulsi juice"], process:"Apply neem leaf paste or tulsi juice on the bite to reduce itching." },
+      { issue:"Chickenpox (Symptom relief)", herbs:["Neem leaves","Oatmeal bath"], process:"Add neem leaves to bath water. Apply oatmeal paste to soothe itching." },
+      { issue:"Measles (Support)", herbs:["Tulsi","Turmeric milk"], process:"Give warm turmeric milk and Tulsi decoction to boost immunity." },
+      { issue:"Malaria (Support)", herbs:["Giloy","Tulsi"], process:"Drink Giloy-Tulsi juice daily as supportive therapy alongside medical treatment." },
+      { issue:"Dengue Recovery", herbs:["Papaya leaf juice","Giloy"], process:"Take 1 tsp papaya leaf juice (filtered) twice daily. Drink Giloy decoction." },
+      { issue:"Typhoid (Diet)", herbs:["Coconut water","Boiled rice water"], process:"Sip coconut water and rice kanji. Avoid solid foods until doctor permits." },
+      { issue:"Viral Fever", herbs:["Tulsi","Black pepper","Honey"], process:"Boil Tulsi + 2 black peppercorns in water, strain, add honey. Drink warm." },
+      { issue:"Chikungunya Pain", herbs:["Castor oil","Garlic"], process:"Massage with warm castor oil infused with garlic. Drink turmeric milk." },
+      { issue:"Swine Flu (Prevention)", herbs:["Tulsi","Ginger","Turmeric"], process:"Drink Tulsi-ginger-turmeric tea daily during flu season." },
+      { issue:"Heartburn", herbs:["Cold milk","Chewing gum (sugar-free)"], process:"Drink a small glass of cold milk or chew gum to stimulate saliva and neutralize acid." },
+      { issue:"Hangover", herbs:["Lemon water","Honey","Ginger"], process:"Mix juice of 1 lemon + 1 tsp honey + pinch ginger in warm water." },
+      { issue:"Morning Sickness", herbs:["Ginger candy","Lemon"], process:"Suck on ginger candy or sniff fresh lemon peel to reduce nausea." },
+      { issue:"Piles / Hemorrhoids", herbs:["Radish juice","Triphala"], process:"Drink radish juice daily. Take Triphala at bedtime. Apply coconut oil locally." },
+      { issue:"Fissure", herbs:["Ghee","Milk"], process:"Drink warm milk with 1 tsp ghee at bedtime. Eat fibre-rich diet." },
+      { issue:"Fungal Infection", herbs:["Neem oil","Turmeric"], process:"Apply neem oil mixed with pinch of turmeric on affected skin twice a day." },
+      { issue:"Ringworm", herbs:["Mustard seeds","Neem"], process:"Grind mustard seeds with water to paste, apply on ringworm. Wash with neem water." },
+      { issue:"Scabies", herbs:["Neem leaves","Turmeric paste"], process:"Bath with neem water. Apply turmeric paste mixed with little mustard oil." },
+      { issue:"Psoriasis (Mild)", herbs:["Aloe vera","Turmeric"], process:"Apply aloe vera gel mixed with turmeric. Drink turmeric milk." },
+      { issue:"Eczema", herbs:["Coconut oil","Camphor"], process:"Mix a small pinch of camphor in coconut oil, apply gently on eczema." },
+      { issue:"Hives / Urticaria", herbs:["Basil leaves","Sandalwood"], process:"Apply sandalwood paste on hives. Drink tulsi tea to calm reaction." },
+      { issue:"Chicken Skin (Keratosis Pilaris)", herbs:["Coconut oil","Ubtan"], process:"Massage with coconut oil and scrub gently with chickpea flour (ubtan) paste." },
+      { issue:"Cracked Heels", herbs:["Ghee","Beeswax"], process:"Apply a mixture of warm ghee and beeswax on heels, wear socks overnight." },
+      { issue:"Athlete's Foot", herbs:["Tea tree oil","Neem"], process:"Soak feet in neem water. Apply diluted tea tree oil between toes." },
+      { issue:"Body Odour", herbs:["Baking soda","Sandalwood"], process:"Apply a paste of sandalwood powder and water under arms. Dust with baking soda." },
+      { issue:"Excessive Sweating", herbs:["Sage tea","Alum"], process:"Drink sage tea daily. Apply natural alum powder to underarms." }
+    ];
+
+    const container = document.getElementById('remedyList');
+    const searchInput = document.getElementById('searchInput');
+    const noResultsDiv = document.getElementById('noResults');
+
+    function renderRemedies(filter = '') {
+      const filtered = remedies.filter(r => {
+        const combined = (r.issue + ' ' + r.herbs.join(' ') + ' ' + r.process).toLowerCase();
+        return combined.includes(filter.toLowerCase());
+      });
+
+      container.innerHTML = '';
+      if (filtered.length === 0) {
+        noResultsDiv.style.display = 'block';
+      } else {
+        noResultsDiv.style.display = 'none';
+        filtered.forEach(r => {
+          const card = document.createElement('div');
+          card.className = 'remedy-card';
+          card.innerHTML = `
+            <div class="remedy-title">
+              <i class="fas fa-mortar-pestle" style="color:#d4a017;"></i> ${r.issue}
+            </div>
+            <div class="herb-badges">
+              ${r.herbs.map(h => `<span class="herb-badge">${h}</span>`).join('')}
+            </div>
+            <div class="process">${r.process}</div>
+          `;
+          container.appendChild(card);
+        });
+      }
+    }
+
+    searchInput.addEventListener('input', e => renderRemedies(e.target.value));
+    renderRemedies();
+  </script>
+</body>
+</html>
